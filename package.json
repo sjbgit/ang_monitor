@@ -1,0 +1,25 @@
+{
+  "name": "ang_monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sjbgit/ang_monitor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjbgit/ang_monitor/issues"
+  },
+  "homepage": "https://github.com/sjbgit/ang_monitor",
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "express": "^4.11.2",
+    "method-override": "^2.3.1",
+    "mongoose": "^3.8.22"
+  }
+}
