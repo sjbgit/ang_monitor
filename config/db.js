@@ -1,6 +1,3 @@
-/**
- * Created by sbunke on 2/3/2015.
- */
 module.exports = {
-    url : 'mongodb://test:test@ds029837.mongolab.com:29837/multivision'
+	url : 'mongodb://test:test@ds029837.mongolab.com:29837/multivision' //'mongodb://<user>:<pass>@mongo.onmodulus.net:27017/uw45mypu'
 }
