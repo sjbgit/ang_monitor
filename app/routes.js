@@ -1,3 +1,16 @@
+var sql = require('mssql');
+
+var config = {
+	user: 'bingpulse@cxgkje8oaa',
+	password: 'PuL$3#P@$$#',
+	server: 'cxgkje8oaa.database.windows.net', // You can use 'localhost\\instance' to connect to named instance
+	database: 'bingpulseci',
+
+	options: {
+		encrypt: true // Use this if you're on Windows Azure
+	}
+}
+
 module.exports = function(app) {
 
 	// server routes ===========================================================
@@ -13,6 +26,47 @@ module.exports = function(app) {
 				body: 'hey!'
 			}
 		]);
+	});
+
+
+	app.get('/api/monitor/aggcount', function (req, res) {
+
+		var query = 'SELECT count(*) as count FROM [dbo].[PulseAggregates]';
+
+		var connection = new sql.Connection(config, function(err) {
+			// ... error checks
+			console.log('in conn error');
+			console.log(err);
+		});
+
+		var request = connection.request();
+
+		request.query(query , function(err, recordset) {
+			// ... error checks
+
+			//console.dir(recordset);
+			res.json(recordset);
+		});
+	});
+
+	app.get('/api/monitor/toplogs', function (req, res) {
+
+		var query = 'SELECT top 100 [Id], [Date],[Thread],[Level],[Logger],[Message],[Exception] FROM [dbo].[Logs] order by id desc';
+
+		var connection = new sql.Connection(config, function(err) {
+			// ... error checks
+			console.log('in conn error');
+			console.log(err);
+		});
+
+		var request = connection.request();
+
+		request.query(query , function(err, recordset) {
+			// ... error checks
+
+			//console.dir(recordset);
+			res.json(recordset);
+		});
 	});
 
 	app.post('/api/posts', function (req, res, next) {

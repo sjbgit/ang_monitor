@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<base href="/">
 
-	<title>Starter Node and Angular</title>
+	<title>Monitor</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
@@ -15,11 +15,13 @@
 	<script src="libs/angular-route/angular-route.min.js"></script>
 
 	<!-- ANGULAR CUSTOM -->
+	<script src="js/controllers/MonitorCtrl.js"></script>
 	<script src="js/controllers/MainCtrl.js"></script>
 	<script src="js/controllers/NerdCtrl.js"></script>
 	<script src="js/services/NerdService.js"></script>
 	<script src="js/controllers/GeekCtrl.js"></script>
 	<script src="js/services/GeekService.js"></script>
+	<script src="js/services/MonitorService.js"></script>
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
 </head>
@@ -34,6 +36,7 @@
 		<ul class="nav navbar-nav">
 			<li><a href="/nerds">Nerds</a></li>
 			<li><a href="/geeks">Geeks</a></li>
+			<li><a href="/monitor">Monitor</a></li>
 		</ul>
 	</nav>
 
