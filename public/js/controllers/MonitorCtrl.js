@@ -3,6 +3,16 @@
  */
 angular.module('MonitorCtrl', ['MonitorService']).controller('MonitorController', ['$scope', 'Monitor', 'Test', function ($scope, Monitor, Test) {
 
+    /*
+     http://devdactic.com/improving-rest-with-ngresource/
+    $resource has:
+    { 'get':    {method:'GET'},
+        'save':   {method:'POST'},
+        'query':  {method:'GET', isArray:true},
+        'remove': {method:'DELETE'},
+        'delete': {method:'DELETE'} };
+    */
+
     $scope.tagline = 'This is the monitor page';
 
     var mon = Monitor;
@@ -20,6 +30,17 @@ angular.module('MonitorCtrl', ['MonitorService']).controller('MonitorController'
             $scope.users = data;
             // Do whatever when the request is finished
         });
+    };
+
+    $scope.getWithId = function() {
+        //var user = {user: 1};
+
+        var query = Test.get({user: 1}); //.get(user);
+        query.$promise.then(function(data) {
+            $scope.users = data;
+            // Do whatever when the request is finished
+        });
+
     };
 
     $scope.save = function() {
