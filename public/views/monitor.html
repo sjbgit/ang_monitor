@@ -2,5 +2,12 @@
     <h1>Monitor Page</h1>
 
     <p>{{ tagline }}</p>
+    <p>{{count}}</p>
+
+    <p class="text-left">
+    <li ng-repeat="log in logs">
+        {{log}}
+    </li>
+    </p>
 
 </div>
