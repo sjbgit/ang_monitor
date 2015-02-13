@@ -3,6 +3,17 @@
  */
 angular.module('MonitorService', ['ngResource'])
 
+    .factory('Test', ['$resource', function($resource){
+        return $resource('http://localhost:8080/api/user/:user',{user: "@user"});
+    }])
+
+    /*
+    .factory('Test', ['$resource', function($resource){
+        return $resource('http://jsonplaceholder.typicode.com/users/:user',{user: "@user"});
+    }])
+    */
+
+
     .factory('Monitor', ['$http', '$resource', function ($http, $resource) {
         var urlBase = '/api/customers';
         var dataFactory = {};

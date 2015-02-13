@@ -22,7 +22,19 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
 // routes ==================================================
+/*
+var monitor = require('./app/monitor');
+console.log('in index.js log monitor: ' + monitor);
+app.get('/api/findall', monitor.findAll);
+*/
+
+require('./app/test')(app);
+
+require('./app/monitor')(app);
+require('./app/rts')(app);
 require('./app/routes')(app); // pass our application into our routes
+
+
 
 // start app ===============================================
 app.listen(port);
