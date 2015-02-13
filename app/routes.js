@@ -9,7 +9,28 @@ var config = {
 	options: {
 		encrypt: true // Use this if you're on Windows Azure
 	}
-}
+};
+
+var countQuery = 'SELECT count(*) as count FROM [dbo].[PulseAggregates]';
+
+var connection = new sql.Connection(config, function(err) {
+	// ... error checks
+	console.log(err);
+	// Query
+
+
+
+	var request = new sql.Request(connection); // or: var request = connection.request();
+
+	/*
+	 request.query(query , function(err, recordset) {
+	 // ... error checks
+
+	 console.dir(recordset);
+	 });
+	 */
+
+});
 
 module.exports = function(app) {
 
@@ -29,15 +50,10 @@ module.exports = function(app) {
 	});
 
 
-	app.get('/api/monitor/aggcount', function (req, res) {
+	app.get('/api/monitor', function (req, res) {
+
 
 		var query = 'SELECT count(*) as count FROM [dbo].[PulseAggregates]';
-
-		var connection = new sql.Connection(config, function(err) {
-			// ... error checks
-			console.log('in conn error');
-			console.log(err);
-		});
 
 		var request = connection.request();
 
@@ -47,6 +63,8 @@ module.exports = function(app) {
 			//console.dir(recordset);
 			res.json(recordset);
 		});
+
+
 	});
 
 	app.get('/api/monitor/toplogs', function (req, res) {
